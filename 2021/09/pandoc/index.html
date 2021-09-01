@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Linux 磁盘分区挂载和热扩容 |  風姿花伝
+    pandoc |  風姿花伝
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -46,7 +46,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Linux-磁盘分区挂载和热扩容"
+  id="post-pandoc"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -57,37 +57,101 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Linux 磁盘分区挂载和热扩容
+  pandoc
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/blog-hexo/2021/01/Linux-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E6%8C%82%E8%BD%BD%E5%92%8C%E7%83%AD%E6%89%A9%E5%AE%B9/" class="article-date">
-  <time datetime="2021-01-19T02:19:40.000Z" itemprop="datePublished">2021-01-19</time>
+      <a href="/blog-hexo/2021/09/pandoc/" class="article-date">
+  <time datetime="2021-09-01T03:54:20.000Z" itemprop="datePublished">2021-09-01</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/blog-hexo/categories/Linux/">Linux</a>
+    <a class="article-category-link" href="/blog-hexo/categories/%E5%B7%A5%E5%85%B7/">工具</a>
   </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <ol>
-<li> 查看磁盘信息 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure></li>
-<li> 对磁盘进行分区 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fdisk /dev/sdc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">1. 创建分区 n</span></span><br><span class="line"><span class="meta">#</span><span class="bash">2. 主分区 e</span></span><br><span class="line"><span class="meta">#</span><span class="bash">3. 分区号 1</span></span><br><span class="line"><span class="meta">#</span><span class="bash">4. 起始块和终止块 </span></span><br><span class="line"><span class="meta">#</span><span class="bash">5. 查看分区 p</span></span><br><span class="line"><span class="meta">#</span><span class="bash">6. 写入分区表 w</span></span><br></pre></td></tr></table></figure></li>
-<li> 格式化分区 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs -t ext4 /dev/sdc1</span><br></pre></td></tr></table></figure></li>
-<li> 挂载磁盘 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdc1 /&#123;dir&#125;</span><br></pre></td></tr></table></figure></li>
-<li> 查看磁盘 UUID<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure></li>
-<li> 开机自动挂载 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">&#123;disk&#125;  &#123;targetDirector&#125;  ext4  defaults  0  0</span><br></pre></td></tr></table></figure></li>
-<li> 分区热扩容   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> 以 /dev/vdb 为例, 只有一个主分区 /dev/vdb1</span><br><span class="line"></span><br><span class="line">growpart /dev/vdb 1</span><br><span class="line"></span><br><span class="line">resize2fs /dev/vdb1</span><br></pre></td></tr></table></figure></li>
-</ol>
+  <h1 id="PANDOC"><a href="#PANDOC" class="headerlink" title="PANDOC"></a><a target="_blank" rel="noopener" href="http://gnss.help/tags/Pandoc/">PANDOC</a></h1><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/Markdown">Markdown</a> 是我平时编写各类材料和文章时最喜欢的工具之一，但将其作为文档分发时却略有些不便。毕竟不是所有人都了解 Markdown 的语法，而且它亦不如富文本文档易读。直至我发现了 <a target="_blank" rel="noopener" href="http://pandoc.org/">Pandoc</a>，它可以将文档在 Markdown、LaTeX、reStructuredText、HTML、Word docx 等多种标记格式之间相互转换，并支持输出 PDF、EPUB、HTML 幻灯片等多种格式。该程序被称为格式转换界的 “瑞士军刀”。</p>
+<p>我平时大量使用该程序生成 HTML 和 PDF 文档，希望本文可以总结一些自己使用的心得。</p>
+<h2 id="程序简介"><a href="# 程序简介" class="headerlink" title="程序简介"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%A8%8B%E5%BA%8F%E7%AE%80%E4%BB%8B">程序简介 </a></h2><p>Pandoc 的作者是 <a target="_blank" rel="noopener" href="http://johnmacfarlane.net/">John MacFarlane</a>，他是加州大学伯克利分校的哲学系教授。Pandoc 使用 <a target="_blank" rel="noopener" href="http://www.haskell.org/">Haskell</a> 语言编写，被作者用来生成讲义、课件和网站等。该程序开源免费，目前以 GPL 协议托管在 <a target="_blank" rel="noopener" href="https://github.com/jgm/pandoc">Github 网站</a> 上。</p>
+<h2 id="程序安装"><a href="# 程序安装" class="headerlink" title="程序安装"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85">程序安装 </a></h2><p>Pandoc 的安装有许多方式，但本文只介绍最简单的方法。Pandoc 的作者已经为<br>Windows、macOS、Linux<br> 等操作系统分别制作了对应的 <a target="_blank" rel="noopener" href="http://pandoc.org/installing.html"> 程序安装包</a>。要使用该程序，只需下载对应的程序安装包进行安装即可。</p>
+<p>对于 Ubuntu 等 Linux 发行版，Pandoc 已经被集成到系统的软件源内，因此还可以直接从软件源安装：</p>
+<p><code>sudo apt-get install pandoc</code></p>
+<p>或者，如果你已经安装了 Anaconda，那么你可以直接使用 Pandoc 了。该程序已经被集成到 Anaconda 中。</p>
+<h2 id="参数说明"><a href="# 参数说明" class="headerlink" title="参数说明"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">参数说明</a></h2><p>Pandoc 程序的命令使用方式为：</p>
+<p><code>pandoc &amp;lt;files&amp;gt; &amp;lt;options&amp;gt;</code></p>
+<p>其中 &lt;files&gt; 为输入的内容，其输入即可以来自文件，也可以来自标准输入甚至网页链接。而 &lt;options&gt; 为参数选项。主要的参数选项有：</p>
+<ul>
+<li><p><em>-f &lt;format&gt;、-r &lt;format&gt;：指定输入文件格式，默认为<br>Markdown；</em></p>
+</li>
+<li><p><em>-t &lt;format&gt;、-w &lt;format&gt;：指定输出文件格式，默认为 HTML；</em></p>
+</li>
+<li><p><em>-o &lt;file&gt;：指定输出文件，该项缺省时，将输出到标准输出；</em></p>
+</li>
+<li><p><em>–highlight-style &lt;style&gt;：设置代码高亮主题，默认为 pygments；</em></p>
+</li>
+<li><p><em>-s：生成有头尾的独立文件（HTML，LaTeX，TEI 或 RTF）；</em></p>
+</li>
+<li><p><em>-S：聪明模式，根据文件判断其格式；</em></p>
+</li>
+<li><p><em>–self-contained：生成自包含的文件，仅在输出 HTML 文档时有效；</em></p>
+</li>
+<li><p><em>–verbose：开启 Verbose 模式，用于 Debug；</em></p>
+</li>
+<li><p><em>–list-input-formats：列出支持的输入格式；</em></p>
+</li>
+<li><p><em>–list-output-formats：列出支持的输出格式；</em></p>
+</li>
+<li><p><em>–list-extensions：列出支持的 Markdown 扩展方案；</em></p>
+</li>
+<li><p><em>–list-highlight-languages：列出支持代码高亮的编程语言；</em></p>
+</li>
+<li><p><em>–list-highlight-styles：列出支持的代码高亮主题；</em></p>
+</li>
+<li><p><em>-v、–version：显示程序的版本号；</em></p>
+</li>
+<li><p><em>-h、–help：显示程序的帮助信息。</em></p>
+</li>
+</ul>
+<p>虽然 Pandoc 提供了用于指定输入输出格式的参数，但是很多时候该参数不必使用。Pandoc 已经足够聪明到可以根据文件名判断输入输出格式，所以除非文件名可能造成歧义，否则这两个参数都可以省略。</p>
+<h2 id="使用示例"><a href="# 使用示例" class="headerlink" title="使用示例"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B">使用示例 </a></h2><h3 id="信息查看"><a href="# 信息查看" class="headerlink" title="信息查看"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"> 信息查看 </a></h3><p> 查看程序支持的输入文件格式：</p>
+<p><code>\$ pandoc --list-input-formats</code></p>
+<p>查看程序支持代码高亮的编程语言：</p>
+<p><code>pandoc --list-highlight-languages</code></p>
+<p>查看程序帮助：</p>
+<p><code>pandoc --help</code></p>
+<h3 id="生成 -HTML- 文档"><a href="# 生成 -HTML- 文档" class="headerlink" title="生成 HTML 文档"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%94%9F%E6%88%90-HTML-%E6%96%87%E6%A1%A3">生成 HTML 文档 </a></h3><p> 使用 Pandoc 可以很容易地将 Markdown 文档渲染为 HTML 网页：</p>
+<p><code>pandoc demo.md -o demo.html</code></p>
+<p>上面的命令将输出一个 HTML 文档，但该文档不包含任何样式，它的显示效果依赖于你使用的浏览器。我们当然希望可以得到排版更精美的文档，只要在转换时引入自己的层叠样式表 CSS 文件。输入的 CSS 文件可使用 -c 命令来指定：</p>
+<p><code>pandoc demo.md -c style.css -o demo.html</code></p>
+<p>如此输出的 HTML 文档已经包含样式文档了，平时自己查看时，效果很不错。但该方式依然存在部分问题。我们发布或共享文档时，需要传送至少两个文件：1 个 HTML 文件和 1 个 CSS 文件，略有些不便。而如果文档中还包含多个本地图片等文件，共享文档几乎成了不可能的事情。好在 Pandoc 可以将外部文件嵌入到 HTML 文档中，生成一个自包含的独立文件：</p>
+<p><code>pandoc demo.md --self-contained -c style.css -o demo.html</code></p>
+<p>在该命令中，–self-contained 参数指定：将任何的外部文件嵌入至输出的文件中，形成一个独立的<br>HTML 文档。这样传送资料时只传送一个文件就可以了，就像分享 PDF 文档一样方便。</p>
+<h3 id="生成 -docx- 文档"><a href="# 生成 -docx- 文档" class="headerlink" title="生成 docx 文档"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%94%9F%E6%88%90-docx-%E6%96%87%E6%A1%A3">生成 docx 文档 </a></h3><p> 虽然我很喜欢使用 HTML 作为文档交换格式，但某些情况下你可能还是需要传送 Word docx 文件。这也不是问题，Pandoc 能够将所支持的输入文件一键转换为 Word docx 格式。</p>
+<p>下面的命令将一份 Markdown 文件转换为 docx 格式：</p>
+<p><code>pandoc demo.md -o demo.docx</code></p>
+<p>下面的命令将 HTML 网页转换为 docx 格式：</p>
+<p><code>pandoc http://gnss.help/2017/06/12/pandoc-install-usage/ -o this\_page.docx</code></p>
+<p>需补充的是：Pandoc 无法为生成的 Word docx 文档指定排版方式。你可能需要二次编辑输出的文件，将标题、正文等调整为满意的样式。</p>
+<h3 id="生成 -PDF- 文档"><a href="# 生成 -PDF- 文档" class="headerlink" title="生成 PDF 文档"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%94%9F%E6%88%90-PDF-%E6%96%87%E6%A1%A3">生成 PDF 文档 </a></h3><p> 使用 Pandoc 直接生成 PDF 文件时，需要安装 LaTeX。并且，Pandoc 自带的 PDF 引擎不支持中文，必须为中文配置额外的引擎和模板。Pandoc 程序生成 PDF 文件的命令为：</p>
+<p><code>pandoc demo.md -o demo.pdf</code></p>
+<p>我生成 PDF 文档时，未使用以上的方法。而是采用 HTML 文件作为中间文件过渡，使用 Windows 系统的 “打印到 PDF” 功能，将 HTML 文档进一步转换为所需的 PDF 文档。</p>
+<h3 id="生成 -Markdown- 文档"><a href="# 生成 -Markdown- 文档" class="headerlink" title="生成 Markdown 文档"></a><a target="_blank" rel="noopener" href="http://gnss.help/2017/06/12/pandoc-install-usage/#%E7%94%9F%E6%88%90-Markdown-%E6%96%87%E6%A1%A3">生成 Markdown 文档 </a></h3><p> 别忘了 Markdown 也是 Pandoc 支持的输出格式之一，我们可以将任何支持的输入格式转换为 Markdown。这对于我们将之前的文档也切换到 Markdown 格式来说，实在是太方便了。</p>
+<p>下面的命令由 Word docx 文档生成 Markdown 文件：</p>
+<p><code>pandoc demo.docx -o demo.md</code></p>
+<p>下面的命令由 HTML 网页生成 Markdown 文档：</p>
+<p><code>pandoc http://gnss.help/2017/06/12/pand</code></p>
+<p>层叠样式表文件决定最终的显示样式，因此有一个漂亮的 CSS 样式表文件非常重要。在此推荐两个 CSS 文件，首先是由 Alberto Leal 制作的 <a target="_blank" rel="noopener" href="https://gist.github.com/Dashed/6714393">Github 风格的样式表文件</a>，它的显示效果类似于 Github 网站的 README 文档。</p>
  
       <!-- reward -->
       
@@ -98,27 +162,16 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-hexo/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-hexo/tags/%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/" rel="tag">磁盘分区</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog-hexo/tags/%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/" rel="tag">磁盘扩容</a></li></ul>
-
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/blog-hexo/2021/09/pandoc/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            pandoc
-          
-        </div>
-      </a>
     
-    
-      <a href="/blog-hexo/2020/12/docker-compose-yml-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="article-nav-link">
+      <a href="/blog-hexo/2021/01/Linux-%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E6%8C%82%E8%BD%BD%E5%92%8C%E7%83%AD%E6%89%A9%E5%AE%B9/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">docker-compose.yml 文件详解</div>
+        <div class="article-nav-title">Linux 磁盘分区挂载和热扩容</div>
       </a>
     
   </nav>
