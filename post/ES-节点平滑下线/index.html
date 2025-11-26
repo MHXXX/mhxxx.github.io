@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="https://blog.xiemh.fun/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="その風を得て、心より心に伝わる花なれば、風姿花伝と名づく。"><meta charset="UTF-8"><title>ES 节点平滑下线 | 風姿花伝</title>
+<link href="https://blog.xiemh.fun/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://blog.xiemh.fun/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+<script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
+
+<link rel="canonical" href="https://blog.xiemh.fun/post/ES-节点平滑下线/" />
+</head>
+<body>
+<div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
+<noscript><p class="warn" >本页面需要浏览器支持（启用）JavaScript</p></noscript><div class="header"><div class="logo_title"><div class="title animated fadeInDown"><a href="https://blog.xiemh.fun"><img alt="logo" style="display:inline-block;" src="https://blog.xiemh.fun/images/avatar.png"/></a><h1 title="風姿花伝" class="weaklink"><a  href="/">風姿花伝</a></h1>
+
+<div class="navbar weaklink">
+<div class="normal_nav">
+<div class="bitcron_nav_container"><div class="bitcron_nav"><div class="bitcron_nav"><div style="display:flex;justify-content:center;"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/風姿花伝" class="selected active current nav__item" >关于</a></li></ul></nav>
+<div style="float:right;margin-top:1em"><form id="gridea-search-form" data-update="1578893743252" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="Search..."></form></div><div style="margin-left:0.5em;margin-top:1.2em"><input id="switch_default" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+<div class="clear clear_nav_inline_end"></div></div></div><div class="clear clear_nav_end"></div></div></div><div class="hamberger" href="javascript:void(0)" onclick="btn_toggle();"><i class="iconfont icon-category"></i></div></div></div></div>
+<div id="hn" class="no-js hidden_nav animated fadeInDown"><div class="bitcron_nav_container"><div class="bitcron_nav"><nav class="mixed_site_nav_wrap site_nav_wrap"><ul class="mixed_site_nav site_nav sm sm-base">	<li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/" class="selected active current nav__item" >首页</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/archives" class="selected active current nav__item" >归档</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/tags" class="selected active current nav__item" >标签</a></li><li><a id="d2ef19af68cc211e98f8a0242ac110003" href="/post/風姿花伝" class="selected active current nav__item" >关于</a></li></ul><div class="clear clear_nav_inline_end"></div></nav></div><div class="clear clear_nav_end"></div></div>
+<div style="display:flex;justify-content:center;inline-block;text-align:center;margin-top:7%"><div><form id="gridea-search-form" data-update="1764134640604" action="/search/index.html"><input class="search-input" autocomplete="off" spellcheck="false" name="q"  placeholder="Search..." /></form></div><div style="margin-left:0.5em"><input id="switch_default_h" onclick="mobileBtn()" type="checkbox" class="switch_default"><label for="switch_default" class="toggleBtn"></label></div></div>
+</div></div>
+<script>function enableDarkmode(){document.body.classList.add("darkmode"),document.getElementById("switch_default").checked=1,document.getElementById("switch_default_h").checked=1}function removeDarkmode(){document.body.classList.remove("darkmode"),document.getElementById("switch_default").checked=0,document.getElementById("switch_default_h").checked=0}function getCookie(a){var b,c=new RegExp("(^| )"+a+"=([^;]*)(;|$)");return(b=document.cookie.match(c))?unescape(b[2]):null}cookie=getCookie("darkmode"),"enable"==cookie&&enableDarkmode(),window.matchMedia("(prefers-color-scheme: dark)").matches&&"disable"!==cookie&&(enableDarkmode(),document.cookie="darkmode=enable; path=/");var mobileBtn=function(){1==document.getElementById("switch_default").checked?(enableDarkmode(),document.cookie="darkmode=enable; path=/"):(removeDarkmode(),document.cookie="darkmode=disable; path=/")};</script>
+
+<div class="main"><div class="main-inner"><div class="content">
+<article class="post">
+<h2 class="post_title sm_margin"><a>ES 节点平滑下线</a></h2>
+<script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2021-12-29</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://blog.xiemh.fun/tag/SV5zgPFup/" class="tag">Elasticsearch</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">339字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">2 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+</section>
+
+<div style="display:flex">
+<div class="md_block" id="md_block">
+<div class="round-shape-one"></div>
+<h1 id="1-排除节点">1. 排除节点</h1>
+<p>通过以下方式将节点从集群排除</p>
+<pre><code>url: http://localhost:9200/_cluster/settings  
+method: PUT
+body: 
+{
+    &quot;transient&quot;:{
+        &quot;cluster.routing.allocation.exclude._name&quot;:&quot;{node.name}&quot;
+    }
+}
+</code></pre>
+<p>上面其实会触发分片的 Allocation 机制，涉及的参数为 cluster.routing.allocation.exclude.{attribute}，其中 {attribute} 表示节点的匹配方式，支持三种：</p>
+<ul>
+<li><code>_name</code>：匹配 node 名称，多个 node 名称用逗号隔开；</li>
+<li><code>_ip</code>：匹配 node ip 地址，多个地址用逗号隔开；</li>
+<li><code>_host</code>：匹配 node 主机名，多个主机名用逗号隔开；</li>
+</ul>
+<h1 id="2-等待所有分片迁移完成">2. 等待所有分片迁移完成</h1>
+<p>上一步执行后，不能马上停服务，必须要等待所有分片迁移到其他节点，若安装了 <code>ES head</code> 插件，建议通过界面查看分区迁移情况与集群健康状态。也可以通过以下命令查看</p>
+<pre><code>url: http://localhost:9200/_cat/shards 
+method: GET
+查看是否存在 RELOCATING 状态的分片
+</code></pre>
+<p>所有分片迁移完成后，可再通过以下命令查看节点数据是否已迁移，都是 0 表示数据也已经迁移</p>
+<pre><code>url: http://localhost:9200/_nodes/{node.name}/stats/indices?pretty
+method: GET
+response:
+{
+  ...
+  &quot;indices&quot; : {
+        &quot;docs&quot; : {
+          &quot;count&quot; : 0,
+          &quot;deleted&quot; : 0
+        },
+        &quot;store&quot; : {
+          &quot;size_in_bytes&quot; : 0
+        },
+  ...
+}
+</code></pre>
+<h1 id="3-停掉节点">3. 停掉节点</h1>
+<h1 id="4-恢复集群路由策略">4. 恢复集群路由策略</h1>
+<pre><code>url: http://localhost:9200/_cluster/settings  
+method: PUT
+body: 
+{
+    &quot;transient&quot;:{
+        &quot;cluster.routing.allocation.exclude._name&quot;:null
+    }
+}
+</code></pre>
+
+<span id="footnote"></span>
+<div id = "warn"></div>
+</div>
+<div class="toc-container"><ul class="markdownIt-TOC">
+<li><a href="#1-%E6%8E%92%E9%99%A4%E8%8A%82%E7%82%B9">1. 排除节点</a></li>
+<li><a href="#2-%E7%AD%89%E5%BE%85%E6%89%80%E6%9C%89%E5%88%86%E7%89%87%E8%BF%81%E7%A7%BB%E5%AE%8C%E6%88%90">2. 等待所有分片迁移完成</a></li>
+<li><a href="#3-%E5%81%9C%E6%8E%89%E8%8A%82%E7%82%B9">3. 停掉节点</a></li>
+<li><a href="#4-%E6%81%A2%E5%A4%8D%E9%9B%86%E7%BE%A4%E8%B7%AF%E7%94%B1%E7%AD%96%E7%95%A5">4. 恢复集群路由策略</a></li>
+</ul>
+</div>
+</div>
+<div id="fullPage"><canvas id="canvas"></canvas></div>
+</article>
+<div id="eof"><span>EOF</span></div><div class="round-shape-one"></div>
+<section>
+<div class="doc_comments">
+
+</div></section>
+</div></div></div><script>
+"use strict";!function(){for(var n=document.getElementsByTagName("pre"),e=n.length,s=0;s<e;s++){n[s].innerHTML='<span class="line-number"></span>'+n[s].innerHTML+'<span class="cl"></span>';for(var a=n[s].innerHTML.split(/\n/).length,r=0;r<a-1;r++){n[s].getElementsByTagName("span")[0].innerHTML+="<span>"+(r+1)+"</span>"}}}();
+let mainNavLinks=document.querySelectorAll(".markdownIt-TOC a");window.addEventListener("scroll",event=>{let fromTop=window.scrollY;mainNavLinks.forEach((link,index)=>{let section=document.getElementById(decodeURI(link.hash).substring(1));let nextSection=null
+if(mainNavLinks[index+1]){nextSection=document.getElementById(decodeURI(mainNavLinks[index+1].hash).substring(1));}
+if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop){link.classList.add("currentToc");}else{link.classList.remove("currentToc");}}else{link.classList.add("currentToc");}}else{link.classList.remove("currentToc");}});});
+var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
+var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
+</script>
+<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"><a href="https://github.com/MHXXX"title="github"><i class="iconfont icon-github"></i></a><a href="neko.xmh@gmail.com"title="envelope"><i class="iconfont icon-envelope"></i></a></div></div><div class="copyright"id="copyright">Copyright © 2018-2020 <a href="https://blog.xiemh.fun" style="margin:0;">風姿花伝</a>.</div>
+<span style="display: inline;margin-right:15px;">👁<strong><span id="busuanzi_value_site_uv"></span></strong></span><span id="busuanzi_container_page_pv" style="display: inline;"><span>📚<strong>87</strong> posts</span></div></div>
+<script>
+console.log("\n %c \u26a1Theme: Bitcron-pro Author's Blog:https://blog.blinkstar.cn  Writen By Serence  \n\n", "color: #ffffff; background: rgba(49, 49, 49, 0.85); padding:5px 0;border-radius:5px;", );
+</script>
+<script src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js" type="module" defer></script>
+<script type="text/javascript" async src="https://blog.xiemh.fun/media/js/prism.js"></script>
+</body>
+</html>
